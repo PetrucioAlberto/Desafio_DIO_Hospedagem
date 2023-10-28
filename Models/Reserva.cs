@@ -13,18 +13,16 @@ namespace DesafioProjetoHospedagem.Models
             DiasReservados = diasReservados;
         }
 
-        public void CadastrarHospedes(List<Pessoa> hospedes)
+        public void CadastrarHospedes(List<Pessoa> hospedes) // Implementei aqui
         {
-            // TODO: Verificar se a capacidade é maior ou igual ao número de hóspedes sendo recebido
-            // *IMPLEMENTE AQUI*
-            if (true)
+                      
+            if (hospedes.Count <= Suite.Capacidade)
             {
                 Hospedes = hospedes;
             }
             else
             {
-                // TODO: Retornar uma exception caso a capacidade seja menor que o número de hóspedes recebido
-                // *IMPLEMENTE AQUI*
+                throw new Exception("A capacidade da suíte não é suficiente para acomodar todos os hóspedes.");
             }
         }
 
@@ -33,25 +31,24 @@ namespace DesafioProjetoHospedagem.Models
             Suite = suite;
         }
 
-        public int ObterQuantidadeHospedes()
+        public int ObterQuantidadeHospedes() // Implementei aqui
         {
-            // TODO: Retorna a quantidade de hóspedes (propriedade Hospedes)
-            // *IMPLEMENTE AQUI*
-            return 0;
+                        
+            int quantidade =  Hospedes.Count;
+            return quantidade;
+
         }
 
-        public decimal CalcularValorDiaria()
+        public decimal CalcularValorDiaria() // Implementei aqui
         {
-            // TODO: Retorna o valor da diária
-            // Cálculo: DiasReservados X Suite.ValorDiaria
-            // *IMPLEMENTE AQUI*
+            
             decimal valor = 0;
+            valor = DiasReservados * Suite.ValorDiaria;
 
-            // Regra: Caso os dias reservados forem maior ou igual a 10, conceder um desconto de 10%
-            // *IMPLEMENTE AQUI*
-            if (true)
-            {
-                valor = 0;
+            if(DiasReservados >= 10 ){
+
+                decimal desconto = valor * 0.10M;
+                valor -= desconto;
             }
 
             return valor;
